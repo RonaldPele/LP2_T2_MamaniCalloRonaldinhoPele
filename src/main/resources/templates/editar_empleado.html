@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Empleado</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h2>Editar Empleado</h2>
+
+  <form th:action="@{/actualizar_empleado}" th:object="${empleado}" method="post">
+  
+    
+    
+    
+    
+    
+    <div class="form-group">
+      <label for="nombreEmpleado">Nombre:</label>
+      <input type="text" class="form-control" id="nombreEmpleado" th:field="*{nombreEmpleado}"  maxlength="45" placeholder="Ingrese el nombre del empleado" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="apellidoEmpleado">Apellido:</label>
+      <input type="text" class="form-control" id="apellidoEmpleado" th:field="*{apellidoEmpleado}" maxlength="45"  placeholder="Ingrese el apellido del empleado" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+      <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="direccion">Dirección:</label>
+      <input type="text" class="form-control" id="direccion" th:field="*{direccion}"  maxlength="45" placeholder="Ingrese una dirección" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="correo">Correo:</label>
+      <input type="email" class="form-control" id="correo" th:field="*{correo}" maxlength="45" placeholder="Ingrese un correo" required>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="form-group">
+      <label for="area">Seleccione un Área:</label>
+      <select name="areaEntity.areaId" id="area" class="form-control" th:field="*{areaEntity.areaId}">
+        <option value="" disabled selected>Selecciona un Área</option>
+        <option th:each="item : ${listaAreas}" th:value="${item.areaId}" th:text="${item.nombreArea}"></option>
+      </select>
+    </div>
+    
+    
+    
+    
+    <a th:href="@{/}" class="btn btn-secondary">Regresar</a>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>
+</body>
+</html>
